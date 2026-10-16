@@ -15,6 +15,8 @@ async function playAndScan(mut, expectRe, maxTurns) {
   save.gameState.currentEvent = null;
   save.gameState.flags = {};
   save.gameState.history = [];
+  save.gameState.turnCount = 0;
+  Object.assign(save.gameState.player, { lifeStageEvents: [], totalChoices: 0, triggeredEvents: {}, triggeredHistoricalEvents: {} });
   const page = await browser.newPage();
   await page.goto(BASE + '/', { waitUntil: 'domcontentloaded' });
   await page.evaluate(([s]) => { localStorage.clear(); localStorage.setItem('tk_save_0', s); }, [JSON.stringify(save)]);

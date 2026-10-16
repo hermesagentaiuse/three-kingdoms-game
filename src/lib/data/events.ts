@@ -804,6 +804,99 @@ export const GUANDU_EVENTS: GameEvent[] = [
       },
     ],
   },
+  {
+    id: 'guandu_battle',
+    title: '官渡決戰',
+    description: '建安五年，曹操與袁紹決戰於官渡。袁軍七十萬（號稱），曹軍兵少糧缺。許攸獻策奇襲烏巢糧倉，曹操親率精騎夜襲，火燒袁軍糧草，袁軍大潰！',
+    era: 'guandu',
+    year: 200,
+    minAge: 16,
+    maxAge: 50,
+    type: 'choice',
+    rarity: 'rare',
+    stage: 'young_adult',
+    choices: [
+      {
+        text: '隨軍奇襲烏巢',
+        description: '與曹操共賭此戰，奇襲糧倉！',
+        effects: { stats: { str: 5, lck: 2 }, reputation: 15, exp: 70, butterflyEffects: [{ type: 'military', target: '袁紹', impact: 'negative', value: 7 }] },
+        statCheck: 'str',
+        difficulty: 13,
+        successText: '【奇襲烏巢】火起烏巢，袁軍七十萬不戰自亂！你陣前斬將，名震中原！',
+        successEffects: { reputation: 20, exp: 50 },
+        failureText: '【奇襲烏巢】袁軍救兵已至，你陷於重圍，身被數創，突圍而出...',
+        failureEffects: { stats: { vit: -5 }, reputation: -5 },
+      },
+      {
+        text: '死守大營',
+        description: '前線兇險，穩守為上。',
+        effects: { stats: { vit: 3, int: 1 }, reputation: 3, exp: 25, butterflyEffects: [{ type: 'military', target: '曹操', impact: 'neutral', value: 1 }] },
+      },
+      {
+        text: '暗中投靠袁紹',
+        description: '袁本初四世三公，兵多將廣，似乎更可信。',
+        effects: { stats: { lck: -2 }, gold: 30, reputation: -8, exp: 20, butterflyEffects: [{ type: 'political', target: '袁紹', impact: 'positive', value: 4 }] },
+      }
+    ],
+  },
+  {
+    id: 'guandu_guo_jia',
+    title: '郭嘉遺計',
+    description: '郭嘉病重。這位曹操最倚重的鬼才謀士，臨終留下平定遼東之計：「公遠征遼東，袁尚兄弟性命懸於一線，不可逼急，急則併力拒守，緩則相圖。」',
+    era: 'guandu',
+    year: 207,
+    minAge: 16,
+    maxAge: 50,
+    type: 'choice',
+    rarity: 'rare',
+    stage: 'young_adult',
+    choices: [
+      {
+        text: '探望郭嘉，聆教益',
+        description: '鬼才臨終之言，字字千金。',
+        effects: { stats: { int: 5 }, exp: 60, reputation: 5, butterflyEffects: [{ type: 'cultural', target: '郭嘉', impact: 'positive', value: 5 }] },
+      },
+      {
+        text: '將遺計轉呈曹操',
+        description: '讓奇計不被埋沒。',
+        effects: { stats: { cha: 2, int: 2 }, reputation: 10, exp: 40, butterflyEffects: [{ type: 'political', target: '曹操', impact: 'positive', value: 4 }] },
+      },
+      {
+        text: '明哲保身',
+        description: '卷入繼承之爭恐有滅門之禍。',
+        effects: { stats: { lck: 2, vit: 1 }, exp: 10, butterflyEffects: [{ type: 'cultural', target: '自身', impact: 'neutral', value: 1 }] },
+      }
+    ],
+  },
+  {
+    id: 'guandu_threervisit',
+    title: '三顧茅廬',
+    description: '玄德三顧隆中，方見臥龍。諸葛亮隆中對：「先取荊州，後取益州，外結孫權，內修政理，則霸業可成，漢室可興。」',
+    era: 'guandu',
+    year: 207,
+    minAge: 16,
+    maxAge: 50,
+    type: 'choice',
+    rarity: 'rare',
+    stage: 'young_adult',
+    choices: [
+      {
+        text: '隨玄德三顧茅廬',
+        description: '求賢若渴，千古佳話。',
+        effects: { stats: { cha: 4, int: 2 }, reputation: 10, exp: 60, butterflyEffects: [{ type: 'political', target: '劉備', impact: 'positive', value: 6 }] },
+      },
+      {
+        text: '往隆中一睹諸葛風采',
+        description: '臥龍、鳳雛，得一可安天下。',
+        effects: { stats: { int: 4, lck: 1 }, exp: 50, butterflyEffects: [{ type: 'cultural', target: '諸葛亮', impact: 'positive', value: 4 }] },
+      },
+      {
+        text: '笑諸葛種地為生',
+        description: '不過村野书生。',
+        effects: { stats: { lck: -1 }, reputation: -3, exp: 5, butterflyEffects: [{ type: 'cultural', target: '自身', impact: 'negative', value: 2 }] },
+      }
+    ],
+  },
 ];
 
 // ============================================
@@ -999,6 +1092,41 @@ export const CHIBI_EVENTS: GameEvent[] = [
       },
     ],
   },
+  {
+    id: 'chibi_flood',
+    title: '水淹七軍',
+    description: '建安二十四年，關羽北伐襄樊，秋雨連綿，漢水暴漲。關羽乘船攻之，于禁七軍盡沒，龐德抬棺死戰被斬，威震華夏，曹操議徙許都以避其鋒！',
+    era: 'chibi',
+    year: 219,
+    minAge: 16,
+    maxAge: 50,
+    type: 'choice',
+    rarity: 'rare',
+    stage: 'young_adult',
+    choices: [
+      {
+        text: '於關羽帳下效力',
+        description: '關雲長威震華夏，此乃建功良機！',
+        effects: { stats: { str: 4, cha: 2 }, reputation: 12, exp: 60, butterflyEffects: [{ type: 'military', target: '關羽', impact: 'positive', value: 6 }] },
+        statCheck: 'str',
+        difficulty: 13,
+        successText: '【水淹七軍】你乘船奮擊，生擒敵將，威名大振！',
+        successEffects: { reputation: 15, exp: 40 },
+        failureText: '【水淹七軍】洪水洶湧，你落水抱木而逃，狼狽不堪...',
+        failureEffects: { stats: { vit: -4 }, reputation: -5 },
+      },
+      {
+        text: '勸關羽提防東吳',
+        description: '呂蒙白衣渡江，荊州恐有後顧之憂！',
+        effects: { stats: { int: 4 }, reputation: 5, exp: 50, butterflyEffects: [{ type: 'diplomatic', target: '關羽', impact: 'positive', value: 4 }] },
+      },
+      {
+        text: '袖手旁觀',
+        description: '神仙打架，凡人遭殃。',
+        effects: { stats: { lck: 1 }, exp: 10, butterflyEffects: [{ type: 'cultural', target: '自身', impact: 'neutral', value: 1 }] },
+      }
+    ],
+  },
 ];
 
 // ============================================
@@ -1148,6 +1276,105 @@ export const SANDAI_EVENTS: GameEvent[] = [
         description: '這些虛談無益於國事。',
         effects: { stats: { str: 2, vit: 2 }, butterflyEffects: [{ type: 'political', target: '自身', impact: 'neutral', value: 1 }] },
       },
+    ],
+  },
+  {
+    id: 'sandai_kongcheng',
+    title: '空城計',
+    description: '馬謖失街亭，司馬懿大軍十五萬兵臨西城。城中僅二千五百老弱，諸葛亮卻開城門，於城樓撫琴，笑容自若。司馬懿疑有伏兵，引軍退去！',
+    era: 'dingli',
+    year: 228,
+    minAge: 16,
+    maxAge: 50,
+    type: 'choice',
+    rarity: 'rare',
+    stage: 'middle',
+    choices: [
+      {
+        text: '城頭陪丞相撫琴',
+        description: '千載難逢，與丞相共守此城！',
+        effects: { stats: { cha: 3, lck: 2 }, reputation: 10, exp: 50, butterflyEffects: [{ type: 'military', target: '司馬懿', impact: 'negative', value: 4 }] },
+        statCheck: 'cha',
+        difficulty: 14,
+        successText: '【琴音不動】你的琴聲絲毫未亂，魏軍疑心更重，悄然退去！',
+        successEffects: { reputation: 12, exp: 30 },
+        failureText: '【琴音動搖】你指下微顫，幸而司馬懿多疑退兵，驚出一身冷汗...',
+        failureEffects: { stats: { vit: -2, lck: -1 } },
+      },
+      {
+        text: '率老弱虛張聲勢',
+        description: '多舉一面旗，多燃一堆火。',
+        effects: { stats: { int: 3 }, exp: 35, butterflyEffects: [{ type: 'military', target: '西城', impact: 'positive', value: 3 }] },
+      },
+      {
+        text: '勸丞相棄城',
+        description: '留得青山在，不怕沒柴燒。',
+        effects: { stats: { vit: 2 }, reputation: -5, exp: 15, butterflyEffects: [{ type: 'military', target: '西城', impact: 'negative', value: 3 }] },
+      }
+    ],
+  },
+  {
+    id: 'sandai_yi_ling',
+    title: '火燒連營',
+    description: '章武元年，劉備為報關羽之仇，親率七十萬大軍伐吳。陸遜火烧連營七百裡，蜀軍舟船器械萬萬計，一時皆毀，劉備僅以身免，退入白帝城！',
+    era: 'dingli',
+    year: 222,
+    minAge: 16,
+    maxAge: 50,
+    type: 'choice',
+    rarity: 'rare',
+    stage: 'young_adult',
+    choices: [
+      {
+        text: '隨軍東征',
+        description: '從征伐吳，建功立業！',
+        effects: { stats: { str: 3, vit: -2 }, reputation: 5, exp: 40, butterflyEffects: [{ type: 'military', target: '蜀漢', impact: 'negative', value: 5 }] },
+        statCheck: 'lck',
+        difficulty: 14,
+        successText: '【突圍】火海之中你護著傷兵殺出重圍，存活下來！',
+        successEffects: { reputation: 10, exp: 40 },
+        failureText: '【火海】連營火起，你被困火中，重傷逃出生天...',
+        failureEffects: { stats: { vit: -6 }, reputation: -5 },
+      },
+      {
+        text: '苦諫伐吳不可',
+        description: '趙雲皆諫：國賊是曹操不是孫權！',
+        effects: { stats: { int: 3, cha: 2 }, reputation: 8, exp: 45, butterflyEffects: [{ type: 'political', target: '劉備', impact: 'positive', value: 4 }] },
+      },
+      {
+        text: '稱病不出',
+        description: '此戰凶多吉少，避之。',
+        effects: { stats: { vit: 2, lck: 2 }, exp: 10, butterflyEffects: [{ type: 'cultural', target: '自身', impact: 'neutral', value: 1 }] },
+      }
+    ],
+  },
+  {
+    id: 'sandai_qiqin',
+    title: '七擒孟獲',
+    description: '南中叛亂，諸葛亮親征。洞主孟獲勇猛善戰，丞相欲收其心，七次生擒、七次縱釋。至第七次，孟獲垂淚曰：「丞相天威，南人不復反矣！」',
+    era: 'dingli',
+    year: 225,
+    minAge: 16,
+    maxAge: 50,
+    type: 'choice',
+    rarity: 'rare',
+    stage: 'young_adult',
+    choices: [
+      {
+        text: '從征南中',
+        description: '攻心為上，軍旅奇聞，千載難逢！',
+        effects: { stats: { int: 4, vit: -2 }, reputation: 8, exp: 55, butterflyEffects: [{ type: 'military', target: '孟獲', impact: 'positive', value: 5 }] },
+      },
+      {
+        text: '獻攻心之策',
+        description: '「夫用兵之道，攻心為上，攻城為下。」',
+        effects: { stats: { int: 5 }, reputation: 12, exp: 60, butterflyEffects: [{ type: 'cultural', target: '諸葛亮', impact: 'positive', value: 5 }] },
+      },
+      {
+        text: '南人反叛，棄之可也',
+        description: '不毛之地，何足掛齒。',
+        effects: { stats: { lck: 1 }, reputation: -3, exp: 10, butterflyEffects: [{ type: 'diplomatic', target: '南中', impact: 'negative', value: 3 }] },
+      }
     ],
   },
 ];
