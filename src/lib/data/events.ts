@@ -1653,12 +1653,12 @@ export const RANDOM_EVENTS: GameEvent[] = [
       {
         text: '購買珍奇物品',
         description: '用金幣換取奇珍。',
-        effects: { stats: { lck: 2 }, gold: -15, butterflyEffects: [{ type: 'economic', target: '市集', impact: 'positive', value: 2 }] },
+        effects: { stats: { lck: 2 }, gold: -15, items: { id: 'treasure_jade', action: 'add' }, butterflyEffects: [{ type: 'economic', target: '市集', impact: 'positive', value: 2 }] },
       },
       {
         text: '購買書籍',
         description: '投資學問。',
-        effects: { stats: { int: 3, lck: 1 }, gold: -10, butterflyEffects: [{ type: 'cultural', target: '市集', impact: 'positive', value: 3 }] },
+        effects: { stats: { int: 3, lck: 1 }, gold: -10, items: { id: 'book_sunzi', action: 'add' }, butterflyEffects: [{ type: 'cultural', target: '市集', impact: 'positive', value: 3 }] },
       },
       {
         text: '購買土地',

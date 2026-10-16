@@ -3,6 +3,7 @@
 // ============================================
 import type { Player, Stats, Companion, GameState, Item, ButterflyEffect } from '@/types/game';
 import { SKILLS } from '@/lib/data/characters';
+import { ALL_ITEMS } from '@/lib/data/items';
 import { rollDice, checkStat } from '@/lib/engine/eventEngine';
 
 export const MIN_STAT = 1;
@@ -119,7 +120,8 @@ export function applyEffectsToPlayer(player: Player, effects: Record<string, unk
   if (effects.items && typeof effects.items === 'object') {
     const itemEffect = effects.items as { action?: string; id?: string; quantity?: number };
     if (itemEffect.action === 'add' && itemEffect.id) {
-      const newItem: Item = {
+      const known = ALL_ITEMS.find((it) => it.id === itemEffect.id);
+      const newItem: Item = known ?? {
         id: itemEffect.id,
         name: itemEffect.id,
         description: '',
@@ -127,7 +129,7 @@ export function applyEffectsToPlayer(player: Player, effects: Record<string, unk
         goldValue: 0,
       };
       newPlayer.resources = { ...newPlayer.resources, items: [...newPlayer.resources.items, newItem] };
-      changeLog.push(`獲得物品：${itemEffect.id}`);
+      changeLog.push(`獲得物品：${newItem.name}`);
     }
     if (itemEffect.action === 'remove' && itemEffect.id) {
       newPlayer.resources = { ...newPlayer.resources };
