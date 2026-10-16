@@ -104,7 +104,7 @@ export default function GamePage() {
 
   // 打字機效果
   useEffect(() => {
-    if (!currentEvent || !mounted) return;
+    if (!currentEvent || !mounted) { setIsTyping(false); return; }
 
     setIsTyping(true);
     setDisplayedText('');
