@@ -146,7 +146,7 @@ export interface Item {
   id: string;
   name: string;
   description: string;
-  type: 'weapon' | 'armor' | 'medicine' | 'book' | 'treasure' | 'key';
+  type: 'weapon' | 'armor' | 'medicine' | 'book' | 'treasure' | 'key' | 'horse';
   effects?: ItemEffects;
   goldValue: number;
   rarity?: Rarity;

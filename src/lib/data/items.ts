@@ -132,11 +132,45 @@ const BOOKS: Item[] = [
   },
   {
     id: 'book_wujing',
-    name: '武經七書',
-    description: '宋代匯編的軍事經典合集，學習後可大幅提升戰鬥事件的成功率。',
+    name: '孟德新書',
+    description: '曹操所注兵法，當世兵家奉為圭臬，研習後可大幅提升戰鬥事件的成功率。',
     type: 'book',
     effects: { combatBonus: 3 },
     goldValue: 60,
+  },
+];
+
+// ============================================
+// 名馬 (3 種) — 演義三大名騎
+// ============================================
+
+const HORSES: Item[] = [
+  {
+    id: 'horse_chitu',
+    name: '赤兔馬',
+    description: '日行千里，夜行八百，渾身火炭紅。先賜董卓，後歸呂布，關公斬顏良誅文醜皆仗此馬。「人中呂布，馬中赤兔」。',
+    type: 'horse',
+    effects: { str: 1, speedBonus: 4, singleCombatBonus: 3 },
+    goldValue: 150,
+    rarity: 'legendary',
+  },
+  {
+    id: 'horse_dilu',
+    name: '的盧馬',
+    description: '額有白點，相馬者蒯越斷言「的盧剋主」。然劉備躍馬檀溪，一躍三丈，生死關頭反救其主。',
+    type: 'horse',
+    effects: { speedBonus: 3, lck: 2 },
+    goldValue: 100,
+    rarity: 'rare',
+  },
+  {
+    id: 'horse_jueying',
+    name: '絕影',
+    description: '曹操的座騎，「絕影」之意為奔走如影不可及。宛城之變，此馬身中三箭、目損一睛仍奮蹄救主，讓曹操得以逃脫。',
+    type: 'horse',
+    effects: { speedBonus: 3, vitRecovery: 1 },
+    goldValue: 100,
+    rarity: 'rare',
   },
 ];
 
@@ -172,6 +206,7 @@ export const ALL_ITEMS: Item[] = [
   ...ARMORS,
   ...MEDICINES,
   ...BOOKS,
+  ...HORSES,
   ...TREASURES,
 ];
 
