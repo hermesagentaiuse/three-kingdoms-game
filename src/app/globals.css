@@ -1,0 +1,263 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================
+   三國蝴蝶 - 全域樣式
+   ============================================ */
+
+:root {
+  --font-song: "Noto Serif TC", "Source Han Serif TC", "MingLiU", serif;
+  --font-hei: "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+  --bg-primary: #1a1410;
+  --bg-secondary: #2a2018;
+  --bg-card: #3a2e22;
+  --text-primary: #ede9e3;
+  --text-secondary: #b3a184;
+  --text-muted: #735c43;
+  --gold: #d4a83f;
+  --gold-dark: #b58814;
+  --gold-light: #f3dfa5;
+  --vermilion: #c23b27;
+  --jade: #2d8a6e;
+  --border: #5e4b37;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-song);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* 自訂捲軸 */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gold-dark);
+}
+
+/* 選取文字 */
+::selection {
+  background: var(--gold-dark);
+  color: var(--text-primary);
+}
+
+/* 打字機效果 */
+.typewriter {
+  overflow: hidden;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* 水墨風格背景 */
+.ink-bg {
+  background: 
+    radial-gradient(ellipse at 20% 50%, rgba(212, 168, 63, 0.03) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(194, 59, 39, 0.03) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 80%, rgba(45, 138, 110, 0.03) 0%, transparent 50%),
+    var(--bg-primary);
+}
+
+/* 金色邊框效果 */
+.gold-border {
+  border: 1px solid var(--gold-dark);
+  box-shadow: 
+    inset 0 0 20px rgba(212, 168, 63, 0.05),
+    0 0 10px rgba(212, 168, 63, 0.1);
+}
+
+/* 古風裝飾線 */
+.ancient-line {
+  position: relative;
+  text-align: center;
+}
+
+.ancient-line::before,
+.ancient-line::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 30%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-dark), transparent);
+}
+
+.ancient-line::before {
+  left: 0;
+}
+
+.ancient-line::after {
+  right: 0;
+}
+
+/* 屬性條動畫 */
+.stat-bar {
+  transition: width 0.5s ease-out;
+}
+
+/* 骰子動畫 */
+@keyframes diceRoll {
+  0% { transform: rotateZ(0deg) scale(1); }
+  25% { transform: rotateZ(90deg) scale(1.2); }
+  50% { transform: rotateZ(180deg) scale(1.1); }
+  75% { transform: rotateZ(270deg) scale(1.15); }
+  100% { transform: rotateZ(360deg) scale(1); }
+}
+
+.dice-rolling {
+  animation: diceRoll 0.6s ease-out;
+}
+
+/* 金色脈衝 */
+@keyframes pulseGold {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(212, 168, 63, 0.4); }
+  50% { box-shadow: 0 0 20px 5px rgba(212, 168, 63, 0.2); }
+}
+
+.gold-pulse {
+  animation: pulseGold 2s ease-in-out infinite;
+}
+
+/* 淡入動畫 */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* 滑入動畫 */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.slide-up {
+  animation: slideUp 0.4s ease-out;
+}
+
+/* 事件卡片 */
+.event-card {
+  background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-secondary) 100%);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.event-card:hover {
+  border-color: var(--gold-dark);
+  box-shadow: 0 0 15px rgba(212, 168, 63, 0.1);
+}
+
+/* 選擇按鈕 */
+.choice-btn {
+  background: linear-gradient(135deg, var(--bg-card) 0%, rgba(94, 75, 55, 0.5) 100%);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.75rem 1.25rem;
+  color: var(--text-primary);
+  font-family: var(--font-song);
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+  line-height: 1.6;
+}
+
+.choice-btn:hover {
+  border-color: var(--gold);
+  background: linear-gradient(135deg, rgba(212, 168, 63, 0.1) 0%, var(--bg-card) 100%);
+  transform: translateX(4px);
+}
+
+.choice-btn:active {
+  transform: translateX(2px);
+}
+
+/* 狀態面板 */
+.stat-panel {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+/* 屬性條 */
+.stat-bar-container {
+  background: var(--bg-primary);
+  border-radius: 4px;
+  height: 8px;
+  overflow: hidden;
+}
+
+.stat-bar-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.5s ease-out;
+}
+
+.stat-bar-fill.int { background: linear-gradient(90deg, #4a90d9, #6bb3f0); }
+.stat-bar-fill.str { background: linear-gradient(90deg, #c23b27, #e05544); }
+.stat-bar-fill.lck { background: linear-gradient(90deg, #d4a83f, #f0c860); }
+.stat-bar-fill.cha { background: linear-gradient(90deg, #2d8a6e, #45b890); }
+.stat-bar-fill.vit { background: linear-gradient(90deg, #8b5e3c, #a87858); }
+
+/* 響應式 */
+@media (max-width: 768px) {
+  .event-card {
+    padding: 1rem;
+  }
+  
+  .choice-btn {
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* 列印樣式 */
+@media print {
+  body {
+    background: white;
+    color: black;
+  }
+  
+  .no-print {
+    display: none;
+  }
+}

@@ -1,0 +1,206 @@
+import type { Ending } from '@/types/game';
+
+// Re-export for convenience
+export type { Ending };
+
+// ============================================
+// 結局系統
+// ============================================
+export const ENDINGS: Ending[] = [
+  {
+    id: 'ending_historical',
+    title: '順應天命',
+    description: '你順應歷史潮流，成為三國歷史的一部分。雖然沒有改變歷史，但你的選擇讓你在亂世中找到了自己的位置。',
+    route: 'historical',
+    requirements: {
+      minReputation: 10,
+      minYearsPlayed: 20,
+    },
+    biography: '一生順應天命，不爭不搶，最終在歷史的長河中留下了淡淡的一筆。',
+    evaluation: {
+      overall: 50,
+      historicalImpact: 10,
+      personalAchievement: 20,
+      relationships: 40,
+      wealth: 30,
+      legacy: 15,
+    },
+  },
+  {
+    id: 'ending_hero',
+    title: '一代名臣',
+    description: '你成為一代名臣，輔佐明主，建功立業。你的智慧和勇氣讓你在三國時代留下了不朽的功績。',
+    route: 'hero',
+    requirements: {
+      minReputation: 50,
+      minStats: { int: 20 },
+      minRelationship: { liu_bei: 30, zhu_ge_liang: 30 },
+      minYearsPlayed: 30,
+    },
+    biography: '一生忠君愛國，智勇雙全，被後人銘記為一代名臣。',
+    evaluation: {
+      overall: 85,
+      historicalImpact: 70,
+      personalAchievement: 85,
+      relationships: 75,
+      wealth: 50,
+      legacy: 80,
+    },
+  },
+  {
+    id: 'ending_hero_military',
+    title: '一代名將',
+    description: '你成為一代名將，征戰沙場，建功立業。你的勇武讓敵人聞風喪膽。',
+    route: 'hero',
+    requirements: {
+      minReputation: 50,
+      minStats: { str: 20 },
+      minYearsPlayed: 30,
+    },
+    biography: '一生征戰，無往不利，被後人銘記為一代名將。',
+    evaluation: {
+      overall: 80,
+      historicalImpact: 65,
+      personalAchievement: 80,
+      relationships: 60,
+      wealth: 45,
+      legacy: 75,
+    },
+  },
+  {
+    id: 'ending_hermit',
+    title: '隱世高人',
+    description: '你功成身退，隱居山林。雖然沒有轟轟烈烈的功績，但你的智慧和品德被後人傳頌。',
+    route: 'hermit',
+    requirements: {
+      minStats: { lck: 15 },
+      maxYearsPlayed: 40,
+    },
+    biography: '看透世事，隱居山林，成為後人口中的隱世高人。',
+    evaluation: {
+      overall: 60,
+      historicalImpact: 5,
+      personalAchievement: 40,
+      relationships: 50,
+      wealth: 20,
+      legacy: 30,
+    },
+  },
+  {
+    id: 'ending_usurper',
+    title: '篡位者',
+    description: '你推翻了舊秩序，建立了自己的政權。但你的統治充滿爭議，後人對你的評價兩極。',
+    route: 'usurper',
+    requirements: {
+      minReputation: 30,
+      minGold: 100,
+      minStats: { str: 15, int: 15 },
+      maxRelationship: { liu_bei: -50, zhu_ge_liang: -50 },
+      minYearsPlayed: 25,
+    },
+    biography: '以非常手段取得權力，建立新政權，但爭議不斷。',
+    evaluation: {
+      overall: 45,
+      historicalImpact: 80,
+      personalAchievement: 60,
+      relationships: 20,
+      wealth: 80,
+      legacy: 40,
+    },
+  },
+  {
+    id: 'ending_tragic',
+    title: '壯志未酬',
+    description: '你懷抱遠大理想，但最終功敗垂成。你的悲劇人生成為後人的嘆息。',
+    route: 'tragic',
+    requirements: {
+      minStats: { int: 15, cha: 15 },
+      maxYearsPlayed: 35,
+    },
+    biography: '懷才不遇，壯志未酬，成為三國時代的悲劇英雄。',
+    evaluation: {
+      overall: 35,
+      historicalImpact: 20,
+      personalAchievement: 30,
+      relationships: 40,
+      wealth: 15,
+      legacy: 25,
+    },
+  },
+  {
+    id: 'ending_legendary',
+    title: '三國奇人',
+    description: '你的一生充滿傳奇色彩，既沒有完全順應歷史，也沒有完全改變歷史。你的故事成為後人傳頌的傳奇。',
+    route: 'legendary',
+    requirements: {
+      minReputation: 40,
+      minGold: 50,
+      minYearsPlayed: 50,
+    },
+    biography: '一生傳奇，跨越多個時代，成為三國時代最傳奇的人物之一。',
+    evaluation: {
+      overall: 90,
+      historicalImpact: 50,
+      personalAchievement: 90,
+      relationships: 70,
+      wealth: 60,
+      legacy: 95,
+    },
+  },
+  {
+    id: 'ending_hidden',
+    title: '蝴蝶效應',
+    description: '你的每一個選擇都像蝴蝶扇動翅膀，最終在三國歷史中引發了巨大的連鎖反應。歷史因為你而完全不同。',
+    route: 'hidden',
+    requirements: {
+      minStats: { int: 20, lck: 20 },
+      minYearsPlayed: 40,
+      specificChoices: ['changed_guandu', 'changed_chibi', 'changed_yiling'],
+    },
+    biography: '一個微小的存在，卻改變了整個三國的歷史走向。你的故事是真正的蝴蝶效應。',
+    evaluation: {
+      overall: 95,
+      historicalImpact: 95,
+      personalAchievement: 85,
+      relationships: 60,
+      wealth: 40,
+      legacy: 100,
+    },
+  },
+  {
+    id: 'ending_infant',
+    title: '夭折之終',
+    description: '你的人生才剛開始就戛然而止。年幼的你尚未經歷世間滄桑，就已離開了這個世界。',
+    route: 'tragic',
+    requirements: {
+      maxYearsPlayed: 5,
+    },
+    biography: '襁褓之中的生命，未及展現便已消逝。雖然生命短暫，但你的存在本身也是歷史的一部分。',
+    evaluation: {
+      overall: 5,
+      historicalImpact: 0,
+      personalAchievement: 0,
+      relationships: 0,
+      wealth: 0,
+      legacy: 0,
+    },
+  },
+  {
+    id: 'ending_short_life',
+    title: '匆匆一生',
+    description: '你的人生短暫而匆忙，未能充分展現自己的才華與潛力。',
+    route: 'tragic',
+    requirements: {
+      maxYearsPlayed: 15,
+    },
+    biography: '短暫的一生未能留下太多痕跡，如同三國長河中泛起的一絲漣漪。',
+    evaluation: {
+      overall: 10,
+      historicalImpact: 2,
+      personalAchievement: 5,
+      relationships: 10,
+      wealth: 5,
+      legacy: 3,
+    },
+  },
+];
